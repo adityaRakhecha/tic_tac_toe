@@ -1,43 +1,125 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
-<CodeBlocks_project_file>
-	<FileVersion major="1" minor="6" />
-	<Project>
-		<Option title="tic-tac-toe" />
-		<Option pch_mode="2" />
-		<Option compiler="gcc" />
-		<Build>
-			<Target title="Debug">
-				<Option output="bin/Debug/tic-tac-toe" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/Debug/" />
-				<Option type="1" />
-				<Option compiler="gcc" />
-				<Compiler>
-					<Add option="-g" />
-				</Compiler>
-			</Target>
-			<Target title="Release">
-				<Option output="bin/Release/tic-tac-toe" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/Release/" />
-				<Option type="1" />
-				<Option compiler="gcc" />
-				<Compiler>
-					<Add option="-O2" />
-				</Compiler>
-				<Linker>
-					<Add option="-s" />
-				</Linker>
-			</Target>
-		</Build>
-		<Compiler>
-			<Add option="-Wall" />
-			<Add option="-fexceptions" />
-		</Compiler>
-		<Unit filename="main.cpp" />
-		<Extensions>
-			<code_completion />
-			<envvars />
-			<debugger />
-			<lib_finder disable_auto="1" />
-		</Extensions>
-	</Project>
-</CodeBlocks_project_file>
+#include<iostream>
+#include<conio.h>
+#include<stdlib.h>
+#include<stdio.h>
+#include<string.h>
+/* ************STILL WORKING ON IT******************** */
+
+
+using namespace std;
+char A[10] = {'0','1','2','3','4','5','6','7','8','9'};
+
+void base();
+int check();
+
+
+int main(){
+    cout<<"\n\n\t\t\t\t\tWelcome To TIC-TAC-TOE ";
+cout<<endl<<endl;
+int flag,player=1,ch;
+char sign;
+char p1[20],p2[20],p[20];
+int k1=0,k2=0;
+cout<<"Player 1 enter your Name: ";
+gets(p1);
+cout<<"\nPlayer 2 enter your Name: ";
+gets(p2);
+
+
+do{
+        base();
+         player =(player%2)?1:2;
+         if(player==1)
+            strcpy(p,p1);
+         else
+            strcpy(p,p2);
+
+       cout<<"\n"<<p<<" enter your choice from 1 to 9: ";
+ here: cin>>ch;
+sign=(player==1)?'X':'O';
+if(ch>=1&&ch<=9){
+    if(ch==1)
+    A[1]= sign;
+if(ch==2)
+    A[2]= sign;
+if(ch==3)
+    A[3]= sign;
+if(ch==4)
+    A[4]= sign;
+if(ch==5)
+    A[5]= sign;
+if(ch==6)
+    A[6]= sign;
+if(ch==7)
+    A[7]= sign;
+if(ch==8)
+    A[8]= sign;
+if(ch==9)
+    A[9]= sign;
+
+flag =check();
+    player++;
+}
+else{
+        cout<<"Enter choice only between 1 to 9: ";
+  goto here;
+}
+
+}while(flag==-1);
+base();
+if(flag==1){
+    if((player-1)==1)
+        k1++;
+    else
+        k2++;
+        }
+else
+    cout<<"\nMatch Draw";
+
+
+
+    if(k1>k2)
+    cout<<"\nHurray! "<<p1<<" you won the match!";
+    else if(k1<k2)
+        cout<<"\nHurray! "<<p2<<" you won the match!";
+    else cout<<"\nMatch Draw!";
+getch();
+return 0;
+
+}
+
+
+int check(){
+if(A[1]==A[2]&&A[2]==A[3])
+    return 1;
+if(A[4]==A[5]&&A[5]==A[6])
+    return 1;
+if(A[7]==A[8]&&A[8]==A[9])
+    return 1;
+if(A[1]==A[4]&&A[4]==A[7])
+    return 1;
+if(A[2]==A[5]&&A[5]==A[8])
+    return 1;
+if(A[3]==A[6]&&A[6]==A[9])
+    return 1;
+if(A[1]==A[5]&&A[5]==A[9])
+    return 1;
+if(A[3]==A[5]&&A[5]==A[7])
+    return 1;
+if( A[1]!='1' &&A[2]!='2' &&A[3]!='3' &&A[4]!='4' &&A[5]!='5' &&A[6]!='6' &&A[7]!='7' &&A[8]!='8' &&A[9]!='9' )
+    return 0;
+else
+    return -1;
+}
+
+void base(){
+ system("cls");
+
+cout<<"\t\t\t\t"<<"   |   |   "<<endl;
+cout<<"\t\t\t\t"<<" "<<A[1]<<" | "<<A[2]<<" | "<<A[3]<<" "<<endl;
+cout<<"\t\t\t\t"<<"---|---|----"<<endl;
+cout<<"\t\t\t\t"<<" "<<A[4]<<" | "<<A[5]<<" | "<<A[6]<<" "<<endl;
+cout<<"\t\t\t\t"<<"---|---|----"<<endl;
+cout<<"\t\t\t\t"<<" "<<A[7]<<" | "<<A[8]<<" | "<<A[9]<<" "<<endl;
+cout<<"\t\t\t\t"<<"   |   |   "<<endl;
+}
